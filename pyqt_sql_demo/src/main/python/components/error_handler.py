@@ -7,7 +7,6 @@ class ErrorHandler(object):
 
     def __exit__(self, exc_type, exc_value, tb):
         if exc_value:
-            # If any exception happened at all
             self.handle(exc_type, exc_value, tb)
         return True
 
