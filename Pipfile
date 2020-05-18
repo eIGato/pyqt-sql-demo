@@ -4,11 +4,9 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-"pyqt5" = "*"
+"pyqt5" = "==5.14.2"
 
 [dev-packages]
-wheel = "*"
-twine = "*"
 
 [requires]
-python_version = "3.6"
+python_version = "3.8"
