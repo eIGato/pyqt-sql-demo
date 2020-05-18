@@ -1,6 +1,10 @@
-from PyQt5.Qt import QMainWindow, QTabWidget, QAction
+from PyQt5.Qt import (
+    QAction,
+    QMainWindow,
+    QTabWidget,
+)
 
-from pyqt_sql_demo.connection_widget import ConnectionWidget
+from .connection_widget import ConnectionWidget
 
 
 class MainWindow(QMainWindow):
@@ -9,28 +13,21 @@ class MainWindow(QMainWindow):
         self.setMinimumWidth(640)
         self.setMinimumHeight(480)
 
-        # Set up QTabWidget as a central widget
         self.tab_widget = QTabWidget(self)
         self.tab_widget.setTabsClosable(True)
         self.tab_widget.tabCloseRequested.connect(self.on_tab_close_clicked)
         self.setCentralWidget(self.tab_widget)
 
-        # Create "Connection" menu
         menu_bar = self.menuBar()
         connection_menu = menu_bar.addMenu('Connection')
 
-        # Add "Create" connection button
         create_connection_action = QAction('Create', self)
         create_connection_action.triggered.connect(self.add_new_tab)
         connection_menu.addAction(create_connection_action)
 
-        # Add "Close" connection button
         close_connection_action = QAction('Close', self)
         close_connection_action.triggered.connect(self.close_current_tab)
         connection_menu.addAction(close_connection_action)
-
-        # self.tool_bar = self.addToolBar('test bar')
-        # self.connect_action = self.tool_bar.addAction('connect')
 
         self.add_new_tab()
 
